@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <title>Jquery exercices base 3</title>
         <link rel="stylesheet" href="style.css">
+        <script src="jquery.js"></script>
     </head>
     <body>
         <h1>Exercices Jquery base 3</h1>
@@ -13,17 +14,120 @@
         <!-------------------------------------------- Exercice 1 -------------------------------------->
         <h3><em>Exercice 1</em></h3>
         <p>Céer un bouton et un champ texte dans lequel on affiche le nombre de clics sur le bouton.</p>
-
+<button id="cliquez">clic ici</button>
+<p id='compteur'></p>
+  <script>
+    $(document).ready(function(){
+      var compteur = 0;
+      $('#cliquez').click(function(){
+        compteur++;
+        $('#compteur').html("compteur de clic" +compteur);
+// on pourrIT AUSSI MARQUER TEXT E LA PLACE DE HTML
+      });
+    })
+  </script>
         <hr>
         <!-------------------------------------------- Exercice 2 -------------------------------------->
         <h3>Exercice 2</h3>
-        <p>Céer 2 boutons ("+" et "-") et un champ texte dans lequel on augmente ou baisse le chiffre en fonction des boutons cliqués</p>
+        <p>Créer 2 boutons ("+" et "-") et un champ texte dans lequel on augmente ou baisse le chiffre en fonction des boutons cliqués</p>
+        <button id="plus"> plus</button>
+        <button id="moins"> moins</button>
+        <p id="results"></p>
+
+        <script>
+        $(document).ready(function(){
+              var depart = 0;
+                  $('#plus').click(function () {
+                     depart++;
+                  $('#results').html(depart);
+                  });
+                  $('#moins').click(function () {
+                     depart--;
+                  $('#results').html(depart);
+                  });
+      });
+        </script>
+
 
         <hr>
         <!-------------------------------------------- Exercice 3 -------------------------------------->
         <h3>Exercice 3</h3>
         <p>Créer 5 boutons et un rectangle. Chaque bouton provoque une action sur le rectangle.
+          <button id="hauteur"> hauteur</button>
+          <button id="vert">vert</button>
+          <button id="colorinit">colorinit</button>
+          <button id="disappear">disappear</button>
+          <button id="appear">appear</button>
+          <div id="rectangle">
 
+
+          </div>
+
+          <script>
+// taille de rectangle
+                      $(document).ready(function(){
+                            var hauteur = 10;
+                                $('#hauteur').click(function(){
+                                hauteur = hauteur + 10;
+                                    if (hauteur>100){
+                                    hauteur = 10;
+                                                    }
+                            var hauteurpx = hauteur+'px';
+                                $('#rectangle').css({'height' : hauteurpx  })
+                    })
+                  })
+// couleurs
+
+                      $(document).ready(function(){
+
+                                $('#vert').click(function(){
+                                $('#rectangle').css({'border-color' : 'green'  })
+                                  })
+                                })
+
+// reinitialiser les couleurs
+// methode 1
+
+                      $(document).ready(function(){
+
+                                $('#colorinit').click(function(){
+                                $('#rectangle').css({'border-color' : 'black'  })
+                                  })
+                                })
+// methode 2
+
+
+// disparaitre
+                      $(document).ready(function(){
+
+                                $('#disappear').click(function(){
+                                $('#rectangle').fadeOut(400);
+                                // $('#rectangle').slideToggle();
+                                  })
+                                })
+//reapparaitre
+                        $(document).ready(function(){
+                                  $('#appear').click(function(){
+                                  // $('#rectangle').toggle();
+                                  $('#rectangle').fadeIn();
+                                            })
+                                          })
+
+
+
+
+                    //     $('#btn2').click(function(){
+                    //     $('#exo4').css({'color' : '#0000FF' ,
+                    //                     'border' : '#0000FF' })
+                    //                               })
+                    // $('#btn3').click(function(){
+                    // $('#exo4').css({'color' : '#FF0000' ,
+                    //                 'border' : '#FF0000' })
+                    //                               })
+
+
+            // css({'background-color': 'blue', }) pour les modifs css
+          </script>
         <ul>
             <li>Bouton 1 : augmente la hauteur de <b>10px</b>, si il dépasse <b>100px</b>, il remet la hauteur à <b>10px</b></li>
             <li>Bouton 2 : met le rectangle en vert</li>
@@ -47,8 +151,43 @@
         <p><b>Bonus</b> : Quand la réponse est trouvée, on obtient le nombre d'essai que l'on a fait.
         </p>
         <hr>
+            <button id="tic" type="button" name="button">let s play</button>
+<input id="nombre" type="text" name="" value="">
+            <p id="random">Resut :</p>
+
+            <script>
+
+                    $(document).ready(function()
+                    {
+
+                    var number = Math.floor(Math.random() * 100);
+                    var nbessai = 0;
+                      $('#tic').click(function(){
+
+                      var saisie = $('#nombre').val(); //recup val jquery
+                      nbessai++;
+                        if (saisie>number)
+                        {
+                          $('#random').text('moins');
+                        }
+                        else if (saisie<number)
+                        {
+                          $('#random').text('plus');
+                        }
+
+                        else
+                        {
+                          $('#random').text("bravo vous avez fait "+nbessai+" essai");
+                        }
+
+                    });
+
+                    });
 
 
 
+
+</script>
     </body>
 </html>
+
